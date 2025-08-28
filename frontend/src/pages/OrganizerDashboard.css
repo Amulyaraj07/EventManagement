@@ -1,0 +1,155 @@
+.organizer-dashboard {
+  padding: 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  min-height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.events-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.event-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  width: 320px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 5px solid #4caf50;
+}
+
+.event-card h2 {
+  margin-top: 0;
+  color: #222;
+}
+
+.event-card p {
+  color: #555;
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.back-btn {
+  margin-bottom: 20px;
+  padding: 10px 16px;
+  cursor: pointer;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #1565c0;
+}
+
+.registrations-section {
+  margin-top: 30px;
+}
+
+.registration-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.registration-table th,
+.registration-table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.registration-table thead {
+  background-color: #1976d2;
+  color: #fff;
+}
+
+.registration-table tbody tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: white;
+}
+
+.status-pending {
+  background-color: #ff9800;
+}
+
+.status-approved {
+  background-color: #4caf50;
+}
+
+.status-rejected {
+  background-color: #f44336;
+}
+
+.btn.approve {
+  background-color: #4caf50;
+  color: white;
+  margin-right: 5px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn.approve:hover {
+  background-color: #45a049;
+}
+
+.btn.reject {
+  background-color: #f44336;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn.reject:hover {
+  background-color: #da190b;
+}
+#backBtn{
+    margin:20px;
+    position:relative;
+}
+#backBtn > button{
+    float:right;
+}
+@media (max-width: 768px) {
+  .events-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .event-card {
+    width: 90%;
+  }
+}
