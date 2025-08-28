@@ -1,0 +1,78 @@
+/* src/pages/HomePage.css */
+
+.student-home {
+  padding: 20px;
+}
+
+.student-home h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2C3E50;
+}
+
+.event-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.event-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.event-card h2 {
+  margin-bottom: 10px;
+  color: #34495E;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: #1ABC9C;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #16A085;
+}
+
+.event-card.registered {
+  border-left: 5px solid #4caf50; /* Highlight registered events */
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  margin-left: 5px;
+}
+
+/* Status colors */
+.status-approved {
+  background-color: #4caf50;
+}
+.status-pending {
+  background-color: #ff9800;
+}
+.status-rejected {
+  background-color: #f44336;
+}
+
+.status-registered {
+  background-color: #4caf50;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
