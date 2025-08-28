@@ -1,20 +1,28 @@
-const dotenv=require("dotenv");
+const dotenv = require("dotenv");
 dotenv.config();
+const studentRoutes = require("./routes/student.routes");
+const organiserRoutes = require("./routes/organizer.routes");
+const adminRoutes = require("./routes/admin.routes");
+const eventRoutes = require("./routes/event.routes");
 
-const express=require("express");
-const cookieParser=require("cookie-parser");
-const connectToDb=require("./db/db");
+const express = require("express");
+const cookieParser = require("cookie-parser");
+const connectToDb = require("./db/db");
 
-const app=express();
+const app = express();
 connectToDb();
 
-//middleware
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.get("/",(req,res)=>{
-    res.send("Hello World");
+app.use("/students", studentRoutes);
+app.use("/organisers", organiserRoutes);
+app.use("/admins", adminRoutes);
+
+app.get("/", (req, res) => {
+  res.send("Event Management APP is running");
 });
 
-module.exports=app;
+module.exports = app;
