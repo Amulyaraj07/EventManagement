@@ -19,7 +19,7 @@ router.post(
 router.post(
   "/login",
   [
-    body("email").isEmail().withMessage("Valid email is required"),
+    body("email").isEmail().withMessage("Valid email is required.."),
     body("password").notEmpty().withMessage("Password is required"),
   ],
   adminController.loginAdmin

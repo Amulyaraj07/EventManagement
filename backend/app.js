@@ -3,7 +3,6 @@ dotenv.config();
 const studentRoutes = require("./routes/student.routes");
 const organiserRoutes = require("./routes/organizer.routes");
 const adminRoutes = require("./routes/admin.routes");
-const eventRoutes = require("./routes/event.routes");
 
 const express = require("express");
 const cookieParser = require("cookie-parser");
@@ -22,7 +21,7 @@ app.use("/organisers", organiserRoutes);
 app.use("/admins", adminRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Event Management APP is running");
+  res.send("Event Management APP is running..");
 });
 
 module.exports = app;
