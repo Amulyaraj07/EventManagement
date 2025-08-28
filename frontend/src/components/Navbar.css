@@ -1,0 +1,46 @@
+/* Navbar background with subtle shadow */
+.custom-navbar {
+  background: #0d1117;
+  padding: 0.8rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo */
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #ffffff !important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Nav Links */
+.nav-links .nav-item {
+  font-size: 1rem;
+  margin-left: 20px;
+  font-weight: 500;
+  color: #e6edf3 !important;
+  transition: all 0.3s ease;
+}
+
+.nav-links .nav-item:hover {
+  color: #58a6ff !important;
+  transform: translateY(-2px);
+}
+
+/* Mobile menu */
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
