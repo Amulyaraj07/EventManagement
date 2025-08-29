@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const studentController = require("../controllers/student.controller");
-const { authStudent } = require("../middlewares/auth.middlewares");
+const { authStudent } = require("../middlewares/auth.middleware");
 const { body } = require("express-validator");
 
 router.post(
@@ -32,5 +32,6 @@ router.post(
 router.get("/profile", authStudent, studentController.getStudentProfile);
 
 router.post("/logout", authStudent, studentController.logoutStudent);
+
 
 module.exports = router;

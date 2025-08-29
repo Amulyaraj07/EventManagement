@@ -1,1 +1,1 @@
-# This readme is for backend
+# Event Management System - Backend API Documentation

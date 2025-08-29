@@ -1,4 +1,4 @@
-const AdminModel = require("../models/admin.model");
+const AdminModel = require("../models/admin");
 const adminService = require("../services/admin.service");
 const { validationResult } = require("express-validator");
 
@@ -55,12 +55,7 @@ module.exports.loginAdmin = async (req, res, next) => {
 
     const token = admin.generateAuthToken();
 
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      maxAge: 24 * 60 * 60 * 1000,
-    });
+    res.cookie("token", token);
 
     const safeAdmin = admin.toObject();
     delete safeAdmin.password;
@@ -76,10 +71,6 @@ module.exports.getAdminProfile = async (req, res, next) => {
 };
 
 module.exports.logoutAdmin = async (req, res, next) => {
-  res.clearCookie("token", {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-  });
+  res.clearCookie("token");
   res.status(200).json({ message: "Logout successful" });
 };

@@ -1,4 +1,4 @@
-const OrganizerModel = require("../models/organizer.model");
+const OrganizerModel = require("../models/organizer");
 
 module.exports.createOrganizer = async ({ firstname, lastname, email, password, department }) => {
   if (!firstname || !email || !password || !department) {

@@ -1,4 +1,4 @@
-const StudentModel = require("../models/student.model");
+const StudentModel = require("../models/student");
 const studentService = require("../services/student.service");
 const { validationResult } = require("express-validator");
 
@@ -16,15 +16,11 @@ module.exports.registerStudent = async (req, res, next) => {
       return res.status(400).json({ message: "Student already exists" });
     }
 
-    const hashedPassword = await StudentModel.hashPassword(password);
-
     const student = await studentService.createStudent({
-      fullname: {
-        firstname: fullname.firstname,
-        lastname: fullname.lastname,
-      },
+      firstname: fullname.firstname,
+      lastname: fullname.lastname,
       email,
-      password: hashedPassword,
+      password,
       course,
       year,
     });
@@ -57,7 +53,7 @@ module.exports.loginStudent = async (req, res, next) => {
     }
 
     const token = student.generateAuthToken();
-    res.cookie("token", token, { httpOnly: true, secure: false }); // secure:true in prod
+    res.cookie("token", token);
     res.status(200).json({ token, student });
   } catch (err) {
     next(err);

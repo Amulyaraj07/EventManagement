@@ -1,20 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const organiserController = require("../controllers/organizer.controller");
-const { authOrganiser } = require("../middlewares/auth.middlewares");
+const organizerController = require("../controllers/organizer.controller");
+const { authOrganizer } = require("../middlewares/auth.middleware");
 const { body } = require("express-validator");
 
 router.post(
   "/register",
   [
     body("fullname.firstname").notEmpty().withMessage("First name is required"),
-    body("email").isEmail().withMessage("Valid email is required.."),
+    body("email").isEmail().withMessage("Valid email is required"),
     body("password")
       .isLength({ min: 6 })
       .withMessage("Password must be at least 6 characters"),
-    body("organization").notEmpty().withMessage("Organization is required"),
+    body("department").notEmpty().withMessage("Department is required"),
   ],
-  organiserController.registerOrganiser
+  organizerController.registerOrganizer
 );
 
 router.post(
@@ -23,11 +23,11 @@ router.post(
     body("email").isEmail().withMessage("Valid email is required"),
     body("password").notEmpty().withMessage("Password is required"),
   ],
-  organiserController.loginOrganiser
+  organizerController.loginOrganizer
 );
 
-router.get("/profile", authOrganiser, organiserController.getOrganiserProfile);
+router.get("/profile", authOrganizer, organizerController.getOrganizerProfile);
 
-router.post("/logout", authOrganiser, organiserController.logoutOrganiser);
+router.post("/logout", authOrganizer, organizerController.logoutOrganizer);
 
 module.exports = router;

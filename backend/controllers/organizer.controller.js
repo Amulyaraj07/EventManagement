@@ -1,4 +1,4 @@
-const OrganizerModel = require("../models/organizer.model");
+const OrganizerModel = require("../models/organizer");
 const organizerService = require("../services/organizer.service");
 const { validationResult } = require("express-validator");
 
@@ -44,7 +44,9 @@ module.exports.loginOrganizer = async (req, res, next) => {
 
     const { email, password } = req.body;
 
-    const organizer = await OrganizerModel.findOne({ email }).select("+password");
+    const organizer = await OrganizerModel.findOne({ email }).select(
+      "+password"
+    );
     if (!organizer) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
@@ -56,12 +58,7 @@ module.exports.loginOrganizer = async (req, res, next) => {
 
     const token = organizer.generateAuthToken();
 
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      maxAge: 24 * 60 * 60 * 1000,
-    });
+    res.cookie("token", token);
 
     const safeOrganizer = organizer.toObject();
     delete safeOrganizer.password;
@@ -77,10 +74,6 @@ module.exports.getOrganizerProfile = async (req, res, next) => {
 };
 
 module.exports.logoutOrganizer = async (req, res, next) => {
-  res.clearCookie("token", {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-  });
+  res.clearCookie("token");
   res.status(200).json({ message: "Logout successful" });
 };

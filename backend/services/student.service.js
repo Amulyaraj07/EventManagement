@@ -1,4 +1,4 @@
-const StudentModel = require("../models/student.model");
+const StudentModel = require("../models/student.js");
 
 module.exports.createStudent = async ({
   firstname,
