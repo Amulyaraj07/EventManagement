@@ -1,12 +1,12 @@
-const EventModel = require("../models/event.model");
+const EventModel = require("../models/event");
 const eventService = require("../services/event.service");
 const { validationResult } = require("express-validator");
-
 
 module.exports.createEvent = async (req, res, next) => {
   try {
     const errors = validationResult(req);
-    if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+    if (!errors.isEmpty())
+      return res.status(400).json({ errors: errors.array() });
 
     const { title, description, date, location } = req.body;
 
@@ -15,7 +15,7 @@ module.exports.createEvent = async (req, res, next) => {
       description,
       date,
       location,
-      createdBy: req.organizer._id,
+      createdBy: req.admin._id,
     });
 
     res.status(201).json(event);
@@ -23,7 +23,6 @@ module.exports.createEvent = async (req, res, next) => {
     next(err);
   }
 };
-
 
 module.exports.updateEvent = async (req, res, next) => {
   try {
@@ -36,7 +35,6 @@ module.exports.updateEvent = async (req, res, next) => {
   }
 };
 
-
 module.exports.deleteEvent = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -48,7 +46,6 @@ module.exports.deleteEvent = async (req, res, next) => {
   }
 };
 
-
 module.exports.getAllEvents = async (req, res, next) => {
   try {
     const events = await eventService.getAllEvents();
@@ -57,7 +54,6 @@ module.exports.getAllEvents = async (req, res, next) => {
     next(err);
   }
 };
-
 
 module.exports.getEventById = async (req, res, next) => {
   try {

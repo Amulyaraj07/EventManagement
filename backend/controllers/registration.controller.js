@@ -1,4 +1,4 @@
-const RegistrationModel = require("../models/registration.model");
+const RegistrationModel = require("../models/registration");
 const registrationService = require("../services/registration.service");
 const { validationResult } = require("express-validator");
 
