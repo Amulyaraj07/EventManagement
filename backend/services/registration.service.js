@@ -1,5 +1,5 @@
 const RegistrationModel = require("../models/registration");
-const EventModel = require("../models/event.model");
+const EventModel = require("../models/event");
 
 module.exports.registerForEvent = async (studentId, eventId) => {
 
