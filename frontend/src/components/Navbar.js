@@ -20,24 +20,21 @@ function AppNavbar() {
       </div>
 
       <div className="links">
-        <Link to="/" className="nav-link">Home</Link>
-        <Link to="/" className="nav-link">Events</Link>
-
-        {user?.role === "organizer" && (
-          <Link to="/organizer" className="nav-link">Organizer Dashboard</Link>
+      
+          {user?.role === "student" && (
+          <Link to="/HomePage" className="nav-link">Events</Link>
         )}
-
-        {user?.role === "admin" && (
-          <Link to="/admin" className="nav-link">Admin Dashboard</Link>
-        )}
-
+   
         {user ? (
           <>
             <span className="user">Hi, {user.name}</span>
             <button onClick={handleLogout} className="logout-btn">Logout</button>
           </>
         ) : (
-          <Link to="/login" className="nav-link">Login</Link>
+          <>
+            <Link to="/login" className="nav-link logout-btn" >Login</Link>
+            <Link to="/register" className="nav-link logout-btn">Register</Link>
+          </>
         )}
       </div>
     </nav>

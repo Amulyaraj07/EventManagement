@@ -7,6 +7,7 @@
   padding: 12px 20px;
   background-color: #2C3E50;
   color: #ECF0F1;
+  border-radius: 10px;
 }
 
 .brand {
@@ -53,4 +54,5 @@
 .logout-btn:hover {
   background-color: #1ABC9C;
   border-color: #1ABC9C;
+  color:white !important;
 }

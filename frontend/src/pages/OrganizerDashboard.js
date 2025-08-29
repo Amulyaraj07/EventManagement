@@ -1,4 +1,4 @@
-// src/pages/organizer/OrganizerDashboard.jsx
+
 import React, { useState } from "react";
 import "./OrganizerDashboard.css";
 
@@ -71,10 +71,11 @@ function OrganizerDashboard() {
         <div className="registrations-section">
           {/* <button className="back-btn" onClick={() => setSelectedEventId(null)}>
             ← Back to Events
-          </button> */}
+            </button> */}
 
           <h2>{selectedEvent.name} - Registrations</h2>
           {selectedEvent.registrations.length > 0 ? (
+            <>
             <table className="registration-table">
               <thead>
                 <tr>
@@ -115,17 +116,20 @@ function OrganizerDashboard() {
                   </tr>
                 ))}
               </tbody>
+              
             </table>
+              <div id="backBtn">
+          <button className="back-btn" onClick={() => setSelectedEventId(null)}>
+              ← Back to Events
+            </button>
+      </div>
+            </>
           ) : (
             <p>No registrations yet.</p>
           )}
         </div>
       )}
-      <div id="backBtn">
-         <button className="back-btn" onClick={() => setSelectedEventId(null)}>
-            ← Back to Events
-          </button>
-      </div>
+      
     </div>
   );
 }

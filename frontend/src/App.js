@@ -7,6 +7,7 @@ import OrganizerDashboard from "./pages/OrganizerDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import LoginPage from "./pages/LoginPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -14,19 +15,23 @@ function App() {
       <AppNavbar />
       <Routes>
         {/* Public */}
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<LoginPage />} />
         <Route path="/event/:id" element={<EventDetail />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<Register />} />
+       
+        <Route path="/HomePage" element={<HomePage />} />
 
         {/* Role-Based */}
         <Route
           path="/organizer"
           // element={<ProtectedRoute element={<OrganizerDashboard />} allowedRoles={["organizer"]} />}
-            element={<OrganizerDashboard />}
+           element={<OrganizerDashboard />}
         />
         <Route
           path="/admin"
-           element={<AdminDashboard />}
+          //  element={<ProtectedRoute element={<AdminDashboard />} allowedRoles={["admin"]} />}
+          element={<AdminDashboard />} 
         />
       </Routes>
     </div>
