@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const studentController = require("../controllers/student.controller");
+const eventController = require("../controllers/event.controller");
+const registrationController = require("../controllers/registration.controller");
 const { authStudent } = require("../middlewares/auth.middleware");
 const { body } = require("express-validator");
 
@@ -32,6 +34,14 @@ router.post(
 router.get("/profile", authStudent, studentController.getStudentProfile);
 
 router.post("/logout", authStudent, studentController.logoutStudent);
+
+router.get("/events", authStudent, eventController.getAllEvents);
+
+router.get("/events/:id", authStudent, eventController.getEventById);
+
+router.post("/events/register", authStudent, registrationController.registerForEvent);
+
+router.get("/registrations/me", authStudent, registrationController.getMyRegistrations);
 
 
 module.exports = router;
