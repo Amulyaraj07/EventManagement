@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const organizerController = require("../controllers/organizer.controller");
+const eventController = require("../controllers/event.controller");
+const registrationController = require("../controllers/registration.controller");
 const { authOrganizer } = require("../middlewares/auth.middleware");
 const { body } = require("express-validator");
 
@@ -29,5 +31,21 @@ router.post(
 router.get("/profile", authOrganizer, organizerController.getOrganizerProfile);
 
 router.post("/logout", authOrganizer, organizerController.logoutOrganizer);
+
+router.get("/events", authOrganizer, eventController.getAllEvents);
+
+router.get("/events/:id", authOrganizer, eventController.getEventById);
+
+router.get(
+  "/events/:eventId/registrations",
+  authOrganizer,
+  registrationController.getEventRegistrations
+);
+
+router.put(
+  "/registrations/:registrationId",
+  authOrganizer,
+  registrationController.updateRegistrationStatus
+);
 
 module.exports = router;
